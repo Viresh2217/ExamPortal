@@ -1,0 +1,55 @@
+<mat-toolbar color="warn">
+  <a
+    *ngIf="!login.isLoggedIn()"
+    routerLink="/"
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
+    <mat-icon>menu_book</mat-icon>
+  </a>
+  <span>Examportal</span>
+  <span class="example-spacer"></span>
+
+  <a
+    *ngIf="!login.isLoggedIn()"
+    routerLink="/login"
+    mat-icon-button
+    class="example-icon favorite-icon mr20"
+    aria-label="Example icon-button with heart icon"
+  >
+    Login
+    <mat-icon>login</mat-icon>
+  </a>
+  <a
+    *ngIf="!login.isLoggedIn()"
+    [routerLink]="'/signup'"
+    mat-icon-button
+    class="example-icon mr20 ml20"
+    aria-label="Example icon-button with share icon"
+  >
+    Register
+    <mat-icon>register</mat-icon>
+  </a>
+
+  <!-- // Showing User Name -->
+  <a
+    *ngIf="login.isLoggedIn()"
+    mat-icon-button
+    routerLink="/admin/profile"
+    class="example-icon mr20 ml20"
+    aria-label="Example icon-button with share icon"
+  >
+    {{ login.getUser().username }}
+  </a>
+
+  <a
+    (click)="logout()"
+    *ngIf="login.isLoggedIn()"
+    mat-icon-button
+    class="example-icon mr20 ml20"
+    aria-label="Example icon-button with share icon"
+  >
+    Logout
+  </a>
+</mat-toolbar>
